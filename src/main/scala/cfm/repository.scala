@@ -81,6 +81,8 @@ object Repo {
 
   implicit def query2RichQuery(q: Query) = new RichQuery(q)
 
+  implicit def query2NodeItr(q: Query): Iterator[Node] = q.execute().getNodes
+
   def ls(path: String)(implicit s: Session) {
     val t = s.getRootNode.getNode(path)
     for (p <- t.getNodes) {

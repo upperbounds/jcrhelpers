@@ -119,6 +119,8 @@ object Repo {
     def nodes() = n.getNodes
     def props() = n.getProperties
 
+    def getProp(prop: String): Option[Property] = if (n.hasProperty(prop)) Some(n.getProperty(prop)) else None
+
     def \() = n.getNodes
 
     def \(c: String) = n.getNode(c)
@@ -141,6 +143,7 @@ object Repo {
       q.bindValue(s, v)
       q
     }
+
 
   }
 
